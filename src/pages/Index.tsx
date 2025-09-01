@@ -49,20 +49,53 @@ export default function Index() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Header */}
-      <header className="border-b bg-white/80 backdrop-blur-sm">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <Icon name="Settings" className="text-white" size={20} />
+      <header className="border-b bg-black/10 backdrop-blur-md relative overflow-hidden">
+        {/* Matrix background effect */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0 bg-gradient-to-r from-primary via-blue-500 to-purple-600 animate-matrix" style={{backgroundSize: '200% 200%'}}></div>
+        </div>
+        
+        {/* Holographic data streams */}
+        <div className="absolute top-0 left-0 w-full h-1">
+          <div className="h-full w-20 bg-gradient-to-r from-transparent via-primary to-transparent animate-data-flow"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between relative z-10">
+          <div className="flex items-center space-x-3 group">
+            <div className="w-10 h-10 bg-gradient-to-br from-primary to-blue-600 rounded-xl flex items-center justify-center animate-hologram shadow-lg">
+              <Icon name="Cpu" className="text-white" size={24} />
             </div>
-            <span className="text-xl font-bold text-slate-800">EQUIPMENT SOLUTIONS</span>
+            <div>
+              <span className="text-xl font-bold bg-gradient-to-r from-slate-800 to-primary bg-clip-text text-transparent">NEXTECH</span>
+              <div className="text-xs text-slate-500 font-mono">v2.1.0 // AI-POWERED</div>
+            </div>
           </div>
+          
           <nav className="hidden md:flex space-x-8">
-            <a href="#" className="text-slate-600 hover:text-primary transition-colors">Главная</a>
-            <a href="#products" className="text-slate-600 hover:text-primary transition-colors">Продукция</a>
-            <a href="#about" className="text-slate-600 hover:text-primary transition-colors">О компании</a>
+            <a href="#" className="relative text-slate-600 hover:text-primary transition-all duration-300 group">
+              Главная
+              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></div>
+            </a>
+            <a href="#products" className="relative text-slate-600 hover:text-primary transition-all duration-300 group">
+              Продукция
+              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></div>
+            </a>
+            <a href="#about" className="relative text-slate-600 hover:text-primary transition-all duration-300 group">
+              О компании
+              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></div>
+            </a>
           </nav>
-          <Button className="hidden md:block">Связаться</Button>
+          
+          <div className="flex items-center space-x-4">
+            <div className="hidden md:flex items-center space-x-2 text-xs font-mono text-slate-500">
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+              ONLINE
+            </div>
+            <Button className="bg-gradient-to-r from-primary to-blue-600 hover:from-blue-600 hover:to-primary transition-all duration-300 animate-glow">
+              <Icon name="Zap" className="mr-2" size={16} />
+              Коннект
+            </Button>
+          </div>
         </div>
       </header>
 
@@ -138,15 +171,53 @@ export default function Index() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 px-4 bg-white">
-        <div className="container mx-auto">
+      <section className="py-16 px-4 bg-slate-900 relative overflow-hidden">
+        {/* Holographic grid background */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{backgroundImage: 'linear-gradient(rgba(37,99,235,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,0.1) 1px, transparent 1px)', backgroundSize: '50px 50px'}}></div>
+        </div>
+        
+        {/* Scanning line effect */}
+        <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent animate-data-flow" style={{animationDuration: '4s'}}></div>
+        
+        <div className="container mx-auto relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
-              <div key={index} className="text-center animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                <div className="text-3xl md:text-4xl font-bold text-primary mb-2">{stat.number}</div>
-                <div className="text-slate-600">{stat.label}</div>
+              <div key={index} className="text-center group animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                {/* Holographic container */}
+                <div className="relative p-6 rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-primary/20 animate-hologram group-hover:scale-105 transition-transform duration-300">
+                  {/* Corner accents */}
+                  <div className="absolute top-2 left-2 w-3 h-3 border-t-2 border-l-2 border-primary opacity-60"></div>
+                  <div className="absolute top-2 right-2 w-3 h-3 border-t-2 border-r-2 border-primary opacity-60"></div>
+                  <div className="absolute bottom-2 left-2 w-3 h-3 border-b-2 border-l-2 border-primary opacity-60"></div>
+                  <div className="absolute bottom-2 right-2 w-3 h-3 border-b-2 border-r-2 border-primary opacity-60"></div>
+                  
+                  {/* Glitch effect on hover */}
+                  <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-blue-400 to-purple-400 bg-clip-text text-transparent mb-2 group-hover:animate-glitch font-mono">
+                    {stat.number}
+                  </div>
+                  <div className="text-slate-400 font-mono text-sm tracking-wider">{stat.label}</div>
+                  
+                  {/* Status indicator */}
+                  <div className="absolute top-3 right-3 w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></div>
+                </div>
               </div>
             ))}
+          </div>
+          
+          {/* Status bar */}
+          <div className="mt-12 flex justify-center">
+            <div className="flex items-center space-x-4 px-6 py-3 bg-slate-800/50 backdrop-blur-sm rounded-full border border-primary/20">
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                <span className="text-xs font-mono text-slate-400">SYSTEM STATUS: OPTIMAL</span>
+              </div>
+              <div className="w-px h-4 bg-slate-600"></div>
+              <div className="flex items-center space-x-2">
+                <Icon name="Wifi" size={12} className="text-primary" />
+                <span className="text-xs font-mono text-slate-400">IoT NETWORK: ACTIVE</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -213,44 +284,100 @@ export default function Index() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-4 bg-white">
-        <div className="container mx-auto">
+      <section id="about" className="py-20 px-4 bg-gradient-to-br from-slate-50 to-blue-50 relative overflow-hidden">
+        {/* Futuristic grid overlay */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(37,99,235,0.3) 1px, transparent 0)', backgroundSize: '40px 40px'}}></div>
+        </div>
+        
+        <div className="container mx-auto relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6">
-                О компании
+            <div className="animate-slide-in-left">
+              <div className="inline-flex items-center px-4 py-2 bg-primary/10 backdrop-blur-sm rounded-full text-primary font-medium mb-6 animate-hologram">
+                <Icon name="Building2" className="mr-2" size={16} />
+                Компания будущего
+              </div>
+              
+              <h2 className="text-4xl md:text-6xl font-bold mb-6">
+                <span className="bg-gradient-to-r from-slate-800 via-primary to-blue-600 bg-clip-text text-transparent">
+                  НАМ ДОВЕРЯЮТ
+                </span><br/>
+                <span className="text-slate-800">ЛИДЕРЫ ОТРАСЛИ</span>
               </h2>
+              
               <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-                Мы — ведущий производитель профессионального оборудования для wellness-индустрии. 
-                Наша миссия — создавать инновационные решения, которые помогают нашим клиентам 
-                строить успешные и современные фитнес-центры, термальные комплексы и бассейны.
+                Пионеры в сфере интеллектуальных wellness-систем. Наши решения с ИИ-управлением и IoT-интеграцией 
+                преобразуют фитнес-клубы в самообучающиеся экосистемы.
               </p>
               
-              <div className="grid sm:grid-cols-3 gap-6 mb-8">
+              {/* Enhanced feature cards */}
+              <div className="grid sm:grid-cols-3 gap-4 mb-8">
                 {features.map((feature, index) => (
-                  <div key={index} className="text-center">
-                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
-                      <Icon name={feature.icon as any} className="text-primary" size={24} />
+                  <div key={index} className="group relative p-4 rounded-xl bg-white/50 backdrop-blur-sm border border-primary/10 hover:border-primary/30 transition-all duration-300 animate-scale-in" style={{animationDelay: `${index * 0.1}s`}}>
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-blue-600/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="relative z-10 text-center">
+                      <div className="w-12 h-12 bg-gradient-to-br from-primary to-blue-600 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300 animate-hologram">
+                        <Icon name={feature.icon as any} className="text-white" size={20} />
+                      </div>
+                      <h3 className="font-bold text-slate-800 mb-2 group-hover:text-primary transition-colors">{feature.title}</h3>
+                      <p className="text-xs text-slate-600">{feature.description}</p>
+                      
+                      {/* Tech indicator */}
+                      <div className="mt-2 flex justify-center">
+                        <div className="w-1 h-1 bg-green-400 rounded-full animate-pulse"></div>
+                      </div>
                     </div>
-                    <h3 className="font-semibold text-slate-800 mb-2">{feature.title}</h3>
-                    <p className="text-sm text-slate-600">{feature.description}</p>
                   </div>
                 ))}
               </div>
               
-              <Button size="lg">
-                <Icon name="Users" className="mr-2" size={20} />
-                Узнать больше
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button size="lg" className="bg-gradient-to-r from-primary to-blue-600 hover:from-blue-600 hover:to-primary transition-all duration-300">
+                  <Icon name="Database" className="mr-2" size={20} />
+                  Дата-центр компании
+                </Button>
+                <Button variant="outline" size="lg" className="border-2 hover:bg-primary/5">
+                  <Icon name="Globe" className="mr-2" size={20} />
+                  Мировая сеть
+                </Button>
+              </div>
             </div>
             
-            <div className="relative">
-              <img 
-                src="/img/2e2c45e7-a2de-4c6f-89c8-a4f2b14e750b.jpg" 
-                alt="Современное фитнес оборудование"
-                className="w-full aspect-square object-cover rounded-2xl shadow-lg"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
+            <div className="relative animate-slide-in-right">
+              {/* Holographic frame */}
+              <div className="relative group">
+                <div className="absolute -inset-4 bg-gradient-to-r from-primary via-blue-500 to-purple-600 rounded-3xl blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-500 animate-glow"></div>
+                
+                <div className="relative bg-slate-900 p-6 rounded-2xl overflow-hidden animate-hologram">
+                  {/* Matrix-style data streams */}
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent animate-data-flow"></div>
+                  <div className="absolute bottom-0 right-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent animate-data-flow" style={{animationDelay: '1s', animationDirection: 'reverse'}}></div>
+                  
+                  <img 
+                    src="/img/2e2c45e7-a2de-4c6f-89c8-a4f2b14e750b.jpg" 
+                    alt="Современное фитнес оборудование"
+                    className="w-full aspect-square object-cover rounded-xl opacity-80"
+                  />
+                  
+                  {/* Holographic overlay */}
+                  <div className="absolute inset-6 border border-primary/30 rounded-xl">
+                    {/* Corner brackets */}
+                    <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-primary"></div>
+                    <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-primary"></div>
+                    <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-primary"></div>
+                    <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-primary"></div>
+                    
+                    {/* Status info overlay */}
+                    <div className="absolute bottom-4 left-4 bg-slate-900/80 backdrop-blur-sm px-3 py-2 rounded-lg">
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                        <span className="text-xs font-mono text-green-400">FACILITY_STATUS: ONLINE</span>
+                      </div>
+                      <div className="text-xs font-mono text-slate-400 mt-1">AI_MONITORING: ACTIVE</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
