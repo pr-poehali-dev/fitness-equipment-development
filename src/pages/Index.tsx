@@ -67,28 +67,71 @@ export default function Index() {
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 px-4">
-        <div className="container mx-auto text-center">
-          <div className="animate-fade-in">
-            <h1 className="text-5xl md:text-6xl font-bold text-slate-800 mb-6 leading-tight">
-              Профессиональное<br />
-              <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
-                оборудование
+      <section className="relative py-20 px-4 overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 left-10 w-32 h-32 bg-primary rounded-full blur-3xl animate-float"></div>
+          <div className="absolute bottom-20 right-10 w-48 h-48 bg-blue-500 rounded-full blur-3xl animate-float" style={{animationDelay: '1s'}}></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-primary to-blue-600 rounded-full blur-3xl animate-glow"></div>
+        </div>
+        
+        <div className="container mx-auto text-center relative z-10">
+          <div className="animate-slide-in-left">
+            <div className="inline-flex items-center px-4 py-2 bg-primary/10 backdrop-blur-sm rounded-full text-primary font-medium mb-6 animate-glow">
+              <Icon name="Zap" className="mr-2" size={16} />
+              Инновационные технологии 2024
+            </div>
+            
+            <h1 className="text-5xl md:text-7xl font-bold text-slate-800 mb-6 leading-tight">
+              <span className="relative inline-block">
+                Будущее
+                <div className="absolute -inset-1 bg-gradient-to-r from-primary via-blue-500 to-primary opacity-30 blur animate-glow rounded-lg"></div>
+                <span className="relative">Будущее</span>
+              </span><br />
+              <span className="bg-gradient-to-r from-primary via-blue-600 to-purple-600 bg-clip-text text-transparent animate-pulse">
+                wellness-индустрии
               </span>
             </h1>
-            <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Инновационные решения для терм, фитнес-клубов и бассейнов. 
-              Превращаем ваши идеи в современные wellness-пространства.
+            
+            <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed animate-slide-in-right" style={{animationDelay: '0.2s'}}>
+              Революционные решения с ИИ-управлением для терм, фитнес-клубов и бассейнов. 
+              Создаем умные wellness-экосистемы нового поколения.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-lg px-8 py-3">
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-in-left" style={{animationDelay: '0.4s'}}>
+              <Button size="lg" className="text-lg px-8 py-3 bg-gradient-to-r from-primary to-blue-600 hover:from-blue-600 hover:to-primary transition-all duration-300 shadow-lg hover:shadow-2xl animate-glow">
+                <Icon name="Rocket" className="mr-2" size={20} />
+                Исследовать технологии
                 <Icon name="ArrowRight" className="ml-2" size={20} />
-                Каталог продукции
               </Button>
-              <Button variant="outline" size="lg" className="text-lg px-8 py-3">
+              <Button variant="outline" size="lg" className="text-lg px-8 py-3 border-2 hover:bg-primary/5 backdrop-blur-sm">
                 <Icon name="Play" className="mr-2" size={20} />
-                Смотреть видео
+                AR-демонстрация
               </Button>
+            </div>
+            
+            {/* Floating tech elements */}
+            <div className="mt-16 relative">
+              <div className="flex justify-center space-x-12 opacity-60">
+                <div className="flex flex-col items-center animate-float">
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-blue-600 rounded-2xl flex items-center justify-center mb-2 shadow-lg">
+                    <Icon name="Cpu" className="text-white" size={24} />
+                  </div>
+                  <span className="text-sm text-slate-600 font-medium">ИИ Контроль</span>
+                </div>
+                <div className="flex flex-col items-center animate-float" style={{animationDelay: '0.5s'}}>
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mb-2 shadow-lg">
+                    <Icon name="Wifi" className="text-white" size={24} />
+                  </div>
+                  <span className="text-sm text-slate-600 font-medium">IoT Сенсоры</span>
+                </div>
+                <div className="flex flex-col items-center animate-float" style={{animationDelay: '1s'}}>
+                  <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mb-2 shadow-lg">
+                    <Icon name="Smartphone" className="text-white" size={24} />
+                  </div>
+                  <span className="text-sm text-slate-600 font-medium">Мобильное Управление</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -122,22 +165,47 @@ export default function Index() {
           
           <div className="grid md:grid-cols-3 gap-8">
             {equipmentTypes.map((equipment, index) => (
-              <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 animate-fade-in bg-white" style={{ animationDelay: `${index * 0.2}s` }}>
-                <CardHeader className="text-center pb-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Icon name={equipment.icon as any} className="text-white" size={32} />
+              <Card key={index} className="group relative border-0 shadow-lg hover:shadow-2xl transition-all duration-500 animate-fade-in bg-white/80 backdrop-blur-sm hover:bg-white overflow-hidden" style={{ animationDelay: `${index * 0.2}s` }}>
+                {/* Hover glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-blue-600/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                {/* Animated border */}
+                <div className="absolute inset-0 bg-gradient-to-r from-primary to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg" style={{padding: '1px'}}>
+                  <div className="h-full w-full bg-white rounded-lg"></div>
+                </div>
+                
+                <CardHeader className="text-center pb-4 relative z-10">
+                  <div className="w-20 h-20 bg-gradient-to-br from-primary to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg group-hover:shadow-2xl animate-glow">
+                    <Icon name={equipment.icon as any} className="text-white" size={36} />
                   </div>
-                  <CardTitle className="text-xl text-slate-800">{equipment.title}</CardTitle>
+                  <CardTitle className="text-xl text-slate-800 group-hover:text-primary transition-colors duration-300">{equipment.title}</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-slate-600 text-center leading-relaxed">
+                <CardContent className="relative z-10">
+                  <CardDescription className="text-slate-600 text-center leading-relaxed mb-6">
                     {equipment.description}
                   </CardDescription>
-                  <Button variant="outline" className="w-full mt-6">
-                    Подробнее
-                    <Icon name="ArrowRight" className="ml-2" size={16} />
+                  
+                  {/* Tech specs preview */}
+                  <div className="flex justify-center space-x-4 mb-6 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="flex items-center text-xs text-slate-500">
+                      <Icon name="Zap" size={12} className="mr-1" />
+                      ИИ-управление
+                    </div>
+                    <div className="flex items-center text-xs text-slate-500">
+                      <Icon name="Shield" size={12} className="mr-1" />
+                      Сертификат EU
+                    </div>
+                  </div>
+                  
+                  <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all duration-300 hover:shadow-lg">
+                    Технические характеристики
+                    <Icon name="ArrowRight" className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={16} />
                   </Button>
                 </CardContent>
+                
+                {/* Floating particles effect */}
+                <div className="absolute top-4 right-4 w-2 h-2 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-ping"></div>
+                <div className="absolute bottom-4 left-4 w-1 h-1 bg-blue-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-ping" style={{animationDelay: '0.5s'}}></div>
               </Card>
             ))}
           </div>
